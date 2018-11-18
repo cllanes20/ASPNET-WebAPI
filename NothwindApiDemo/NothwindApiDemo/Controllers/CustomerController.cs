@@ -6,8 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace NothwindApiDemo.Controllers
 {
+    [Route("api/customers")]
     public class CustomerController: Controller
     {
+        [HttpGet()]
         public JsonResult GetCustomers()
         {
             return new JsonResult(new List<object>()

@@ -34,6 +34,17 @@ namespace NothwindApiDemo
 
             app.UseMvc();
 
+            //Ruteo para retrornar una pagina web
+            //app.UseMvc(config=> {
+            //    config.MapRoute(name:"Default",
+            //        template:"{controller}/{action}/{id?}",
+            //        defaults: new
+            //        {
+            //            controller="Home",
+            //            action = "index"
+            //        });
+            //});
+
             //app.Run(async (context) =>
             //{
             //    await context.Response.WriteAsync("Hello World!");
