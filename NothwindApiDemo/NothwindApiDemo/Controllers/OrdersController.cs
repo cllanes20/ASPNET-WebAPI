@@ -22,7 +22,7 @@ namespace NothwindApiDemo.Controllers
             return Ok(customer.Orders);
         }
 
-        [HttpGet("{customerId}/orders/{id?}")]
+        [HttpGet("{customerId}/orders/{id}")]
         public IActionResult GetOrder(int customerId, int id)
         {
             var customer = Repository.Instance.Customers.FirstOrDefault(c => c.Id == customerId);
