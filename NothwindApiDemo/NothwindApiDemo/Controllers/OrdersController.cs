@@ -47,15 +47,19 @@ namespace NothwindApiDemo.Controllers
             {
                 return BadRequest();
             }
-            var customer = Repository.Instance.Customers.FirstOrDefault(c => c.Id == customerId);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            CustomerDTO customer = Repository.Instance.Customers.FirstOrDefault(c => c.Id == customerId);
             if (customer == null)
             {
                 return NotFound();
             }
 
-            var maxOrderId = Repository.Instance.Customers.SelectMany(c => c.Orders).Max(o => o.OrderId);
+            int maxOrderId = Repository.Instance.Customers.SelectMany(c => c.Orders).Max(o => o.OrderId);
 
-            var finalOrder = new OrdersDTO()
+            OrdersDTO finalOrder = new OrdersDTO()
             {
                 OrderId = maxOrderId++,
                 CustomerId = order.CustomerId,
