@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using NothwindApiDemo.Models;
 
 namespace NothwindApiDemo.Controllers
 {
@@ -24,7 +25,7 @@ namespace NothwindApiDemo.Controllers
         [HttpGet("{id}")]
         public IActionResult GetCustomer(int id)
         {
-            var result = Repository.Instance.Customers.FirstOrDefault(c => c.Id == id);
+            CustomerDTO result = Repository.Instance.Customers.FirstOrDefault(c => c.Id == id);
             if(result == null)
             {
                 return NotFound();
@@ -32,5 +33,6 @@ namespace NothwindApiDemo.Controllers
             return Ok(result);
             //return new JsonResult(result);
         }
+
     }
 }
