@@ -78,7 +78,7 @@ namespace NothwindApiDemo.Controllers
             };
             customer.Orders.Add(finalOrder);
 
-            return CreatedAtRoute("GetOrder", new {customerId = customerId, id = finalOrder.OrderId }, finalOrder);
+            return CreatedAtRoute("GetOrder", new {customerId, id = finalOrder.OrderId }, finalOrder);
         }
 
         [HttpPut("{customerId}/orders/{id}")]
